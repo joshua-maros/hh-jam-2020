@@ -3,6 +3,5 @@
 *.sln
 Library/
 Logs/
-Packages/
 Temp/
 UserSettings/
