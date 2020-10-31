@@ -12,7 +12,7 @@ public class DoorInteractButton : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            float interactRadius = 5f;
+            float interactRadius = 2f;
             Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(playerTransform.position, interactRadius);
             foreach (Collider2D collider2D in collider2DArray)
             {
