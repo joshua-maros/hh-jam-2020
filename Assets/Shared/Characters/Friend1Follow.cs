@@ -26,7 +26,8 @@ public class Friend1Follow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics2D.IgnoreCollision(mainplayer.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
+        if (friend2 != null)
+            Physics2D.IgnoreCollision(mainplayer.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
         if (Vector2.Distance(transform.position, target.position) > 2)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

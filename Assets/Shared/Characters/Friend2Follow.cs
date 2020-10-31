@@ -32,4 +32,10 @@ public class Friend2Follow : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
+
+    public void StartDeathSequence()
+    {
+        // TODO: Add drama :P
+        Destroy(gameObject);
+    }
 }

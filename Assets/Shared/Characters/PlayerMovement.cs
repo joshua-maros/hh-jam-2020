@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Physics2D.IgnoreCollision(friend1.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
+        if (friend1 != null && friend2 != null)
+            Physics2D.IgnoreCollision(friend1.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
         mx = Input.GetAxisRaw("Horizontal");
 
         Vector3 flashlightCenter = cam.WorldToScreenPoint(flashlight.transform.position);

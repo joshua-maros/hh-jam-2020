@@ -27,6 +27,7 @@ public class GlobalData : MonoBehaviour
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
+    private float bubbleTimer = 0.0f;
 
     private GameObject GetSpeakerObject(Speaker speaker) 
     {
@@ -57,6 +58,7 @@ public class GlobalData : MonoBehaviour
             currentSpeechBubble.ShowText(currentConversation.text);
             currentSpeechBubble.target = GetSpeakerObject(currentConversation.speaker);
         }
+        bubbleTimer = 0.0f;
     }
 
     public void StartConversation(ConversationPiece root)
@@ -78,7 +80,9 @@ public class GlobalData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("AdvanceSpeech"))
+        bubbleTimer += Time.deltaTime;
+        // Prevent the user from accidentally pressing advance twice.
+        if (Input.GetButtonDown("AdvanceSpeech") && bubbleTimer > 1.0f)
         {
             if (currentConversation != null)
             {

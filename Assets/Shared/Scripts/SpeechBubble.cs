@@ -23,6 +23,7 @@ public class SpeechBubble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null) return;
         Vector3 bubbleOffset = Vector3.up * 2.0f;
         Vector3 newPos = Vector3.Lerp(transform.position, target.transform.position + bubbleOffset, Time.deltaTime * 4.0f);
         transform.position = newPos;
