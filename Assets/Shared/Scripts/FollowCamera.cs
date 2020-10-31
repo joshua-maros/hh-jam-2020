@@ -5,6 +5,8 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public GameObject target = null;
+    // Turn this on to follow the player even if they are going very fast.
+    public bool superspeed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +17,8 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 newPos = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * 2.0f);
+        float speed = superspeed ? 20.0f : 2.0f;
+        Vector3 newPos = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * speed);
         if ((target.transform.position - transform.position).magnitude < 0.05f) {
             newPos = target.transform.position;
         }
