@@ -37,5 +37,13 @@ public class Friend2Follow : MonoBehaviour
     {
         // TODO: Add drama :P
         Destroy(gameObject);
+        // GlobalData.instance.StartConversation(null);
+        ConversationPiece concern = new ConversationPiece();
+        concern.text = "FRIEND2?";
+        concern.speaker = Speaker.Player;
+        concern.next = new ConversationPiece();
+        concern.next.text = "Where'd you go, FRIEND2?";
+        concern.next.speaker = Speaker.Friend1;
+        GlobalData.instance.StartConversation(concern);
     }
 }

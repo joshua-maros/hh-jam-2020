@@ -23,7 +23,9 @@ public class GlobalData : MonoBehaviour
     public Friend1Follow friend1 = null;
     public Friend2Follow friend2 = null;
     public SpeechBubble speechBubblePrefab = null;
+    public bool useWasPressed = false;
     public static GlobalData instance = null;
+    public GameObject beforeRoom3 = null, room3Recursion = null;
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
@@ -71,6 +73,12 @@ public class GlobalData : MonoBehaviour
         ConfigureSpeechBubble();
     }
 
+    public void ActivateRoom3Recursion()
+    {
+        beforeRoom3.transform.position = new Vector3(0, 20, 0);
+        room3Recursion.transform.position = new Vector3(0, 0, 0);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +88,7 @@ public class GlobalData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        useWasPressed = Input.GetButtonDown("Use");
         bubbleTimer += Time.deltaTime;
         // Prevent the user from accidentally pressing advance twice.
         if (Input.GetButtonDown("AdvanceSpeech") && bubbleTimer > 1.0f)
