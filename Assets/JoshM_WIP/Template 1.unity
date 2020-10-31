@@ -609,6 +609,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368f99d3fbbc242409d42e3455201b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &317978307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6929993954252058645, guid: 0893df7d35b8ec52c964ee19bbc8d361, type: 3}
+  m_PrefabInstance: {fileID: 1049606441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317978310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317978307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ff3dbbf817a20d0bcd026f823aa908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDuringLightning: 1
+  colorDuringLightning: {r: 0.8301887, g: 1, b: 0.8428657, a: 1}
 --- !u!1 &328379365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1264,8 @@ PrefabInstance:
       propertyPath: conversationSpeakers.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 86180874173708215, guid: 5921fdf079b27208e883380b1be442f9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5921fdf079b27208e883380b1be442f9, type: 3}
 --- !u!4 &523315937 stripped
 Transform:
@@ -1267,6 +1287,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67ee738c6e3f463da93b4818dd13f69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &523315941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523315938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90403fd1509b28a0c9c7e3a9e3cd79b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &528795999
@@ -2115,11 +2147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6929993954252058651, guid: 0893df7d35b8ec52c964ee19bbc8d361, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7200003
+      value: 4.48
       objectReference: {fileID: 0}
     - target: {fileID: 6929993954252058651, guid: 0893df7d35b8ec52c964ee19bbc8d361, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7450004
+      value: 5.72
       objectReference: {fileID: 0}
     - target: {fileID: 6929993954252058651, guid: 0893df7d35b8ec52c964ee19bbc8d361, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2901,6 +2933,8 @@ MonoBehaviour:
   useWasPressed: 0
   beforeRoom3: {fileID: 150583916}
   room3Recursion: {fileID: 601953917}
+  lightningNow: 0
+  blackoutNow: 0
 --- !u!4 &1292705669
 Transform:
   m_ObjectHideFlags: 0
@@ -4677,6 +4711,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2051172257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 86180874173708210, guid: 5921fdf079b27208e883380b1be442f9, type: 3}
+  m_PrefabInstance: {fileID: 1777183911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051172260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051172257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90403fd1509b28a0c9c7e3a9e3cd79b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2140847488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1226407312876298855, guid: 6e86f4e91cea5372f8c77f968c26da34, type: 3}

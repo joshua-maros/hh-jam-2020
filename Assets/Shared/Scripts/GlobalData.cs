@@ -26,10 +26,29 @@ public class GlobalData : MonoBehaviour
     public bool useWasPressed = false;
     public static GlobalData instance = null;
     public GameObject beforeRoom3 = null, room3Recursion = null;
+    public bool lightningNow = false, blackoutNow = false;
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
     private float bubbleTimer = 0.0f;
+
+    private IEnumerator LightningImpl()
+    {
+        for (int i = 0; i < 3; i++) {
+            yield return new WaitForSeconds(0.1f);
+            lightningNow = true;
+            blackoutNow = false;
+            yield return new WaitForSeconds(0.05f);
+            lightningNow = false;
+            blackoutNow = true;
+        }
+        blackoutNow = false;
+    }
+
+    public void DoLightning()
+    {
+        StartCoroutine("LightningImpl");
+    }
 
     private GameObject GetSpeakerObject(Speaker speaker) 
     {

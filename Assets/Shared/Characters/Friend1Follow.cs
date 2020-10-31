@@ -33,4 +33,22 @@ public class Friend1Follow : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
+
+    private IEnumerator DeathSequence()
+    {
+        GlobalData.instance.DoLightning();
+        // Wait for the second blackout frame.
+        while (!GlobalData.instance.blackoutNow) yield return null;
+        while (GlobalData.instance.blackoutNow) yield return null;
+        while (!GlobalData.instance.blackoutNow) yield return null;
+        transform.position = new Vector2(0.0f, -10000.0f);
+        yield return new WaitForSeconds(1.0f);
+        // Maybe add something here.
+        Destroy(gameObject);
+    }
+
+    public void StartDeathSequence()
+    {
+        StartCoroutine("DeathSequence");
+    }
 }

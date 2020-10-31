@@ -27,4 +27,9 @@ public class RoomPivotUtil : MonoBehaviour
     {
         cam.superspeed = false;
     }
+
+    public void KillFriend1()
+    {
+        GlobalData.instance.friend1.StartDeathSequence();
+    }
 }
