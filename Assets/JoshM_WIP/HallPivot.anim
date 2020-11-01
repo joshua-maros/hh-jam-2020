@@ -436,7 +436,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 7.9666667
+  - time: 6.85
     functionName: KillFriend1
     data: 
     objectReferenceParameter: {fileID: 0}
