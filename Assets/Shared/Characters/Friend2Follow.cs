@@ -56,7 +56,7 @@ public class Friend2Follow : MonoBehaviour
         while (GlobalData.instance.blackoutNow) yield return null;
         while (!GlobalData.instance.blackoutNow) yield return null;
         transform.position = new Vector2(0.0f, -10000.0f);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
         ConversationPiece concern = new ConversationPiece();
         concern.text = "Hey, where'd FRIEND2 go?";
         concern.speaker = Speaker.Player;
