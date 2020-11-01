@@ -128,6 +128,11 @@ public class GlobalData : MonoBehaviour
         realCam.screenshake = amount;
     }
 
+    public void StartFinale()
+    {
+        cam.gameObject.GetComponent<Animator>().enabled = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
