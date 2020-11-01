@@ -22,6 +22,7 @@ public class Friend2Follow : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Friend1").GetComponent<Transform>();
         mainplayer = GlobalData.instance.mainPlayer.gameObject;
         friend1 = GlobalData.instance.friend1.gameObject;
+        anim.SetFloat("Speed", 0.8f);
     }
 
     // Update is called once per frame
