@@ -32,4 +32,9 @@ public class RoomPivotUtil : MonoBehaviour
     {
         GlobalData.instance.friend1.StartDeathSequence();
     }
+
+    public void BasementTeleport()
+    {
+        GlobalData.instance.EnterBasement();
+    }
 }

@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() 
     {
         Vector2 movement = new Vector2(mx * movementSpeed, rb.velocity.y);
-        rb.velocity = movement;
+        // Don't set the velocity when we are on the slippery hallway part.
+        if (transform.eulerAngles.z < 20) rb.velocity = movement;
     }
 }

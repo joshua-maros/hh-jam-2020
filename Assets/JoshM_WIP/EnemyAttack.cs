@@ -28,6 +28,7 @@ public class EnemyAttack : MonoBehaviour
             if (GlobalData.instance.useWasPressed)
             {
                 health -= 1;
+                GlobalData.instance.DoScreenShake(0.3f);
                 if (health == 0)
                 {
                     anim.SetTrigger("Die");

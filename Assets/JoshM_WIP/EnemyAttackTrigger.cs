@@ -31,7 +31,9 @@ public class EnemyAttackTrigger : MonoBehaviour
 
     private IEnumerator DoAck()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+        GlobalData.instance.DoScreenShake(0.5f);
+        yield return new WaitForSeconds(0.3f);
         ConversationPiece ack = new ConversationPiece();
         ack.text = "ACK!";
         ack.speaker = Speaker.Player;

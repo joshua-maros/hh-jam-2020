@@ -19,14 +19,16 @@ public class ConversationPiece
 public class GlobalData : MonoBehaviour
 {
     public Camera cam = null;
+    private FollowCamera realCam = null;
     public PlayerMovement mainPlayer = null;
     public Friend1Follow friend1 = null;
     public Friend2Follow friend2 = null;
     public SpeechBubble speechBubblePrefab = null;
     public bool useWasPressed = false;
     public static GlobalData instance = null;
-    public GameObject beforeRoom3 = null, room3Recursion = null;
+    public GameObject beforeRoom3 = null, room3Recursion = null, recursionPivot = null, basementSpawn = null;
     public bool lightningNow = false, blackoutNow = false;
+    public GameObject totalBlackout = null;
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
@@ -38,6 +40,7 @@ public class GlobalData : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             lightningNow = true;
             blackoutNow = false;
+            if (i == 0) DoScreenShake(0.5f);
             yield return new WaitForSeconds(0.05f);
             lightningNow = false;
             blackoutNow = true;
@@ -96,12 +99,38 @@ public class GlobalData : MonoBehaviour
     {
         beforeRoom3.transform.position = new Vector3(0, 20, 0);
         room3Recursion.transform.position = new Vector3(0, 0, 0);
+        mainPlayer.gameObject.transform.parent = recursionPivot.transform;
+        friend1.gameObject.transform.parent = recursionPivot.transform;
+    }
+
+    private IEnumerator BasementTeleport()
+    {
+        blackoutNow = true;
+        totalBlackout.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        mainPlayer.transform.parent = null;
+        mainPlayer.transform.eulerAngles = new Vector3(0, 0, 0);
+        mainPlayer.transform.position = basementSpawn.transform.position;
+        yield return new WaitForSeconds(2.5f);
+        totalBlackout.SetActive(false);
+        blackoutNow = false;
+    }
+
+    public void EnterBasement()
+    {
+        StartCoroutine("BasementTeleport");
+    }
+
+    public void DoScreenShake(float amount)
+    {
+        realCam.screenshake = amount;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        realCam = cam.GetComponent<FollowCamera>();
     }
 
     // Update is called once per frame
