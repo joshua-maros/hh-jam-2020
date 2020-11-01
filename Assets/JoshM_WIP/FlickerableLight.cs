@@ -12,6 +12,8 @@ public class FlickerableLight : MonoBehaviour
     private List<float> nextFlickers = new List<float>();
     private float flickerTimer = 0.0f;
     public float minFlickerTime = 0.05f, maxFlickerTime = 0.1f;
+    public bool flickerAlways = false;
+    public bool forceOff = false;
 
     public void DoFlickers(float totalTime)
     {
@@ -23,6 +25,11 @@ public class FlickerableLight : MonoBehaviour
             nextFlickers.Add(offTime);
             nextFlickers.Add(onTime);
         }
+    }
+
+    public bool IsOn()
+    {
+        return currentlyOn;
     }
 
     public void Toggle()
@@ -48,7 +55,14 @@ public class FlickerableLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nextFlickers.Count > 0)
+        if (forceOff)
+        {
+            if (IsOn())
+            {
+                Toggle();
+            }
+        }
+        else if (nextFlickers.Count > 0)
         {
             flickerTimer += Time.deltaTime;
             float nextTime = nextFlickers[0];
@@ -58,6 +72,14 @@ public class FlickerableLight : MonoBehaviour
                 nextFlickers.RemoveAt(0);
                 Toggle();
             }
+        }
+        else if (flickerAlways)
+        {
+            DoFlickers(10.0f);
+        }
+        else if (!forceOff && !IsOn())
+        {
+            Toggle();
         }
     }
 }

@@ -9,6 +9,7 @@ public class BatteryLevel : MonoBehaviour
     public float maxTime = 5f;
     float timeLeft;
     public GameObject dangerText;
+    public FlickerableLight flashlight;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,16 @@ public class BatteryLevel : MonoBehaviour
     {
         if (timeLeft > 0)
         {
-            timeLeft -= Time.deltaTime;
-            batteryBar.fillAmount = timeLeft / maxTime;
-        } else
+            if (flashlight.IsOn())
+            {
+                timeLeft -= Time.deltaTime;
+                batteryBar.fillAmount = timeLeft / maxTime;
+            }
+        } 
+        else
         {
             dangerText.SetActive(true);
-            
+            flashlight.flickerAlways = true;
         }
     }
 }
