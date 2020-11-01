@@ -25,7 +25,7 @@ public class SpeechBubble : MonoBehaviour
     {
         if (target == null) return;
         Vector3 offset = Vector3.up * 1.5f;
-        Vector3 bubbleOffset = Vector3.up * 2.0f;
+        Vector3 bubbleOffset = Vector3.up * 0.8f;
         Vector3 targetpos = target.transform.position + offset;
         Vector3 newPos = Vector3.Lerp(transform.position, targetpos + bubbleOffset, Time.deltaTime * 4.0f);
         transform.position = newPos;
