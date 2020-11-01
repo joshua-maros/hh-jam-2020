@@ -20,6 +20,18 @@ public class EnemyAttack : MonoBehaviour
         attacking = true;
     }
 
+    private IEnumerator Conversation()
+    {
+        yield return new WaitForSeconds(0.8f);
+        ConversationPiece panic = new ConversationPiece();
+        panic.text = "I want to get out of here.";
+        panic.speaker = Speaker.Player;
+        panic.next = new ConversationPiece();
+        panic.next.text = "Yeah, let's leave.";
+        panic.next.speaker = Speaker.Friend1;
+        GlobalData.instance.StartConversation(panic);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,21 +39,15 @@ public class EnemyAttack : MonoBehaviour
         {
             if (GlobalData.instance.useWasPressed)
             {
+                if (health > 0) GlobalData.instance.DoScreenShake(0.3f);
                 health -= 1;
-                GlobalData.instance.DoScreenShake(0.3f);
                 if (health == 0)
                 {
                     anim.SetTrigger("Die");
                     // Detach from player.
                     transform.parent = null;
-                    ConversationPiece panic = new ConversationPiece();
-                    panic.text = "We need to get out of here.";
-                    panic.speaker = Speaker.Player;
-                    panic.next = new ConversationPiece();
-                    panic.next.text = "Yeah, let's leave.";
-                    panic.next.speaker = Speaker.Friend1;
-                    GlobalData.instance.StartConversation(panic);
                     GlobalData.instance.ActivateRoom3Recursion();
+                    StartCoroutine("Conversation");
                 }
             }
         }

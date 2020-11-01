@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomPivotUtil : MonoBehaviour
 {
     public FollowCamera cam = null;
+    public AudioSource mainSound, preludePlayer;
+    public AudioClip prelude1, prelude2;
 
     // Start is called before the first frame update
     void Start()
@@ -36,5 +38,22 @@ public class RoomPivotUtil : MonoBehaviour
     public void BasementTeleport()
     {
         GlobalData.instance.EnterBasement();
+    }
+
+    public void PlayMainSound()
+    {
+        mainSound.Play();
+    }
+
+    public void PlayPrelude1()
+    {
+        preludePlayer.clip = prelude1;
+        preludePlayer.Play();
+    }
+
+    public void PlayPrelude2()
+    {
+        preludePlayer.clip = prelude2;
+        preludePlayer.Play();
     }
 }
