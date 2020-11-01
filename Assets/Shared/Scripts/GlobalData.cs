@@ -29,6 +29,7 @@ public class GlobalData : MonoBehaviour
     public GameObject beforeRoom3 = null, room3Recursion = null, recursionPivot = null, basementSpawn = null;
     public bool lightningNow = false, blackoutNow = false;
     public GameObject totalBlackout = null;
+    public AudioSource thunder;
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
@@ -36,6 +37,7 @@ public class GlobalData : MonoBehaviour
 
     private IEnumerator LightningImpl()
     {
+        thunder.Play();
         for (int i = 0; i < 3; i++) {
             yield return new WaitForSeconds(0.1f);
             lightningNow = true;
