@@ -30,10 +30,10 @@ public class Friend1Follow : MonoBehaviour
         if (friend2 != null)
             Physics2D.IgnoreCollision(mainplayer.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
         float distance = Vector2.Distance(transform.position, target.position);
-        if (distance > 2.0f)
+        if (distance > 1.7f)
         {
             anim.SetBool("Walking", true);
-            transform.position = Vector2.MoveTowards(transform.position, target.position, Mathf.Clamp01(distance - 1.5f) * speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Mathf.Clamp01(distance - 1.2f) * speed * Time.deltaTime);
             if (target.position.x < transform.position.x)
             {
                 transform.localScale = new Vector3(-1, 1, 1);

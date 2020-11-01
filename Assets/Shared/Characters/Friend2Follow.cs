@@ -29,10 +29,10 @@ public class Friend2Follow : MonoBehaviour
     {
         Physics2D.IgnoreCollision(mainplayer.GetComponent<Collider2D>(), friend1.GetComponent<Collider2D>());
         float distance = Vector2.Distance(transform.position, target.position);
-        if (distance > 2.0f)
+        if (distance > 1.5f)
         {
             anim.SetBool("Walking", true);
-            transform.position = Vector2.MoveTowards(transform.position, target.position, Mathf.Clamp01(distance - 1.5f) * speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Mathf.Clamp01(distance - 1.0f) * speed * Time.deltaTime);
             if (target.position.x < transform.position.x)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
@@ -57,11 +57,14 @@ public class Friend2Follow : MonoBehaviour
         transform.position = new Vector2(0.0f, -10000.0f);
         yield return new WaitForSeconds(3.0f);
         ConversationPiece concern = new ConversationPiece();
-        concern.text = "Wait, where'd FRIEND2 go?";
+        concern.text = "Hey, where'd FRIEND2 go?";
         concern.speaker = Speaker.Player;
         concern.next = new ConversationPiece();
         concern.next.text = "I think they went ahead.";
         concern.next.speaker = Speaker.Friend1;
+        concern.next.next = new ConversationPiece();
+        concern.next.next.text = "Oh, okay.";
+        concern.next.next.speaker = Speaker.Player;
         GlobalData.instance.StartConversation(concern);
         // If we destroy it before starting the convo the coroutine will be destroyed too.
         Destroy(gameObject);

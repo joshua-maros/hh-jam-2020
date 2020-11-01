@@ -26,5 +26,15 @@ public class EnemyAttackTrigger : MonoBehaviour
         triggered = true;
 
         enemy.StartAttack();
+        StartCoroutine("DoAck");
+    }
+
+    private IEnumerator DoAck()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ConversationPiece ack = new ConversationPiece();
+        ack.text = "ACK!";
+        ack.speaker = Speaker.Player;
+        GlobalData.instance.StartConversation(ack);
     }
 }
