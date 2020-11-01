@@ -20,4 +20,50 @@ public class FinaleHelper : MonoBehaviour
     {
         GlobalData.instance.StartFinale();
     }
+
+    public void ToggleBlack()
+    {
+        GlobalData.instance.totalBlackout.SetActive(!GlobalData.instance.totalBlackout.activeSelf);
+    }
+
+    public void BlackSequence()
+    {
+        StartCoroutine("BSI");
+    }
+
+    private IEnumerator BSI()
+    {
+        float[] delays = {
+            5,
+
+            5, 5,
+            5, 15,
+            5, 15,
+            5, 20,
+            5, 15,
+
+            5, 5,
+            5, 15,
+            5, 15,
+            5, 20,
+            5, 15,
+
+            5, 5,
+            5, 15,
+            5, 15,
+            5, 20,
+            5, 15,
+
+            5, 10,
+            5, 10,
+            5, 5,
+            5, 5,
+            5, 5,
+        };
+        foreach (float delay in delays)
+        {
+            ToggleBlack();
+            yield return new WaitForSeconds(delay / 100.0f * 1.5f);
+        }
+    }
 }
