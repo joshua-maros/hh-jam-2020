@@ -436,6 +436,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 7.9666667
+    functionName: KillFriend1
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 11.9
     functionName: DisableCameraSuperspeed
     data: 

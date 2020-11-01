@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed;
     public Rigidbody2D rb;
     public GameObject flashlight;
+    public Animator anim = null;
 
     private GameObject friend1;
     private GameObject friend2;
@@ -28,11 +29,20 @@ public class PlayerMovement : MonoBehaviour
         if (friend1 != null && friend2 != null)
             Physics2D.IgnoreCollision(friend1.GetComponent<Collider2D>(), friend2.GetComponent<Collider2D>());
         mx = Input.GetAxisRaw("Horizontal");
+        anim.SetBool("Walking", mx * mx > 0.1);
+        if (mx < -0.1)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (mx > 0.1)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
 
         Vector3 flashlightCenter = cam.WorldToScreenPoint(flashlight.transform.position);
         Vector3 target = Input.mousePosition;
         float angle = Mathf.Atan2(target.y - flashlightCenter.y, target.x - flashlightCenter.x) * Mathf.Rad2Deg;
-        flashlight.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angle - 90.0f);
+        flashlight.transform.eulerAngles = new Vector3(0.0f, 0.0f, angle - 90.0f);
     }
 
     private void FixedUpdate() 

@@ -10,6 +10,7 @@ public class Friend2Follow : MonoBehaviour
     public float speed;
 
     private Transform target;
+    public Animator anim = null;
 
     private GameObject mainplayer;
     private GameObject friend1;
@@ -27,9 +28,23 @@ public class Friend2Follow : MonoBehaviour
     void Update()
     {
         Physics2D.IgnoreCollision(mainplayer.GetComponent<Collider2D>(), friend1.GetComponent<Collider2D>());
-        if (Vector2.Distance(transform.position, target.position) > 2)
+        float distance = Vector2.Distance(transform.position, target.position);
+        if (distance > 2.0f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            anim.SetBool("Walking", true);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Mathf.Clamp01(distance - 1.5f) * speed * Time.deltaTime);
+            if (target.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
         }
     }
 
