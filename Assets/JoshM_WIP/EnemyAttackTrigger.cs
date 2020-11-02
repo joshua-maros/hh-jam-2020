@@ -6,6 +6,7 @@ public class EnemyAttackTrigger : MonoBehaviour
 {
     private bool triggered = false;
     public EnemyAttack enemy = null;
+    public AudioSource sound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +27,16 @@ public class EnemyAttackTrigger : MonoBehaviour
         triggered = true;
 
         enemy.StartAttack();
+        sound.Play();
+        GlobalData.instance.DoScreenShake(0.5f);
         StartCoroutine("DoAck");
     }
 
     private IEnumerator DoAck()
     {
-        yield return new WaitForSeconds(0.2f);
-        GlobalData.instance.DoScreenShake(0.5f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
+        GlobalData.instance.mainPlayer.anim.SetBool("Struggling", true);
+        yield return new WaitForSeconds(0.4f);
         ConversationPiece ack = new ConversationPiece();
         ack.text = "ACK!";
         ack.speaker = Speaker.Player;

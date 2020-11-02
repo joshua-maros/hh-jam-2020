@@ -47,6 +47,7 @@ public class EnemyAttack : MonoBehaviour
                     // Detach from player.
                     transform.parent = null;
                     GlobalData.instance.ActivateRoom3Recursion();
+                    GlobalData.instance.mainPlayer.anim.SetBool("Struggling", false);
                     StartCoroutine("Conversation");
                 }
             }

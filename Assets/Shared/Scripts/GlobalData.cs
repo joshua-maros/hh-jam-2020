@@ -30,6 +30,7 @@ public class GlobalData : MonoBehaviour
     public bool lightningNow = false, blackoutNow = false;
     public GameObject totalBlackout = null;
     public AudioSource thunder;
+    public GameObject musicSource, credits;
 
     private ConversationPiece currentConversation = null;
     private SpeechBubble currentSpeechBubble = null;
@@ -109,6 +110,7 @@ public class GlobalData : MonoBehaviour
     {
         blackoutNow = true;
         totalBlackout.SetActive(true);
+        musicSource.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         mainPlayer.transform.parent = null;
         mainPlayer.transform.eulerAngles = new Vector3(0, 0, 0);

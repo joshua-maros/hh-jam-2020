@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class FlickerableLight : MonoBehaviour
 {
     private new Light2D light = null;
-    private float maxIntensity = 1.0f;
+    public float maxIntensity = 1.0f;
     private bool currentlyOn = true;
 
     private List<float> nextFlickers = new List<float>();
@@ -29,7 +29,7 @@ public class FlickerableLight : MonoBehaviour
 
     public bool IsOn()
     {
-        return currentlyOn;
+        return !forceOff;
     }
 
     public void Toggle()
@@ -57,7 +57,7 @@ public class FlickerableLight : MonoBehaviour
     {
         if (forceOff)
         {
-            if (IsOn())
+            if (currentlyOn)
             {
                 Toggle();
             }
@@ -77,7 +77,7 @@ public class FlickerableLight : MonoBehaviour
         {
             DoFlickers(10.0f);
         }
-        else if (!forceOff && !IsOn())
+        else if (!forceOff && !currentlyOn)
         {
             Toggle();
         }

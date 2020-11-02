@@ -38,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+        if (anim.GetBool("Struggling"))
+        {
+            mx = 0.0f;
+        }
 
         Vector3 flashlightCenter = cam.WorldToScreenPoint(flashlight.transform.position);
         Vector3 target = Input.mousePosition;

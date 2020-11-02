@@ -34,8 +34,6 @@ public class FinaleHelper : MonoBehaviour
     private IEnumerator BSI()
     {
         float[] delays = {
-            5,
-
             5, 5,
             5, 15,
             5, 15,
@@ -65,5 +63,8 @@ public class FinaleHelper : MonoBehaviour
             ToggleBlack();
             yield return new WaitForSeconds(delay / 100.0f * 1.5f);
         }
+        GlobalData.instance.totalBlackout.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        GlobalData.instance.credits.SetActive(true);
     }
 }

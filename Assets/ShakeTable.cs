@@ -15,7 +15,7 @@ public class ShakeTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float strength = 0.05f;
+        float strength = 0.03f;
         transform.position = basepos + new Vector3(
             strength * Random.Range(-1.0f, 1.0f),
             strength * Random.Range(-1.0f, 1.0f),

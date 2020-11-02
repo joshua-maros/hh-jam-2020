@@ -26,6 +26,6 @@ public class FlickerLightTrigger : MonoBehaviour
         if (player == null) return;
         triggered = true;
 
-        light.DoFlickers(flickerTime);
+        light.flickerAlways = true;
     }
 }

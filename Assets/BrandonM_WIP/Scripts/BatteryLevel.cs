@@ -33,7 +33,7 @@ public class BatteryLevel : MonoBehaviour
         else
         {
             dangerText.SetActive(true);
-            flashlight.flickerAlways = true;
+            flashlight.maxIntensity = 0.0f;
         }
     }
 }

@@ -58,7 +58,7 @@ public class Friend2Follow : MonoBehaviour
         transform.position = new Vector2(0.0f, -10000.0f);
         yield return new WaitForSeconds(2.0f);
         ConversationPiece concern = new ConversationPiece();
-        concern.text = "Hey, where'd FRIEND2 go?";
+        concern.text = "Hey, where'd Erin go?";
         concern.speaker = Speaker.Player;
         concern.next = new ConversationPiece();
         concern.next.text = "I think they went ahead.";
