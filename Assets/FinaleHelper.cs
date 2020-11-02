@@ -64,7 +64,7 @@ public class FinaleHelper : MonoBehaviour
             yield return new WaitForSeconds(delay / 100.0f * 1.5f);
         }
         GlobalData.instance.totalBlackout.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
         GlobalData.instance.credits.SetActive(true);
     }
 }

@@ -156,5 +156,10 @@ public class GlobalData : MonoBehaviour
                 ConfigureSpeechBubble();
             }
         }
+        if (Input.GetKey("escape"))
+        {
+            Debug.Log("alskdjfalksdj");
+            Application.Quit();
+        }
     }
 }
